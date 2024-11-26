@@ -71,4 +71,21 @@ router.get(
   })
 );
 
+router.post("/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    var params = {
+      post_logout_redirect_uri: "http://localhost:3000/",
+    };
+    res.redirect(
+      ASGARDEO_BASE_URL +
+        process.env.ASGARDEO_ORGANISATION +
+        "/oidc/logout?" +
+        qs.stringify(params)
+    );
+  });
+});
+
 module.exports = router;
