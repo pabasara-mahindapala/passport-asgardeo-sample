@@ -10,10 +10,22 @@
 
 <body>
   <h1>
-    <%= title %>
+    User Profile
   </h1>
-  <p>Welcome to <%= title %>
-  </p>
+  <div>
+    <p>
+      <strong>Username:</strong>
+      <%= user.username%>
+    </p>
+    <p>
+      <strong>First Name:</strong>
+      <%= user.givenName%>
+    </p>
+    <p>
+      <strong>Last Name:</strong>
+      <%= user.familyName%>
+    </p>
+  </div>
   <div>
     <form action="/logout" method="post">
       <button type="submit">Log Out</button>
