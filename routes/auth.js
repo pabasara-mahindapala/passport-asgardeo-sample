@@ -39,3 +39,19 @@ passport.use(
     }
   )
 );
+
+var express = require("express");
+var qs = require("querystring");
+var router = express.Router();
+
+router.get("/login", passport.authenticate("asgardeo"));
+
+router.get(
+  "/oauth2/redirect",
+  passport.authenticate("asgardeo", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  })
+);
+
+module.exports = router;
