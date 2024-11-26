@@ -40,6 +40,23 @@ passport.use(
   )
 );
 
+passport.serializeUser(function (user, cb) {
+  process.nextTick(function () {
+    cb(null, {
+      id: user?.uiProfile?.id,
+      username: user?.uiProfile?._json?.username,
+      givenName: user?.uiProfile?.name?.givenName,
+      familyName: user?.uiProfile?.name?.familyName,
+    });
+  });
+});
+
+passport.deserializeUser(function (user, cb) {
+  process.nextTick(function () {
+    return cb(null, user);
+  });
+});
+
 var express = require("express");
 var qs = require("querystring");
 var router = express.Router();
