@@ -20,7 +20,7 @@ passport.use(
       clientID: process.env.ASGARDEO_CLIENT_ID,
       clientSecret: process.env.ASGARDEO_CLIENT_SECRET,
       callbackURL: "/oauth2/redirect",
-      scope: ["profile"],
+      scope: ["profile internal_login"],
     },
     function verify(
       issuer,
@@ -35,6 +35,7 @@ passport.use(
     ) {
       return verified(null, {
         uiProfile: uiProfile,
+        accessToken: accessToken,
       });
     }
   )
@@ -47,6 +48,7 @@ passport.serializeUser(function (user, cb) {
       username: user?.uiProfile?._json?.username,
       givenName: user?.uiProfile?.name?.givenName,
       familyName: user?.uiProfile?.name?.familyName,
+      accessToken: user?.accessToken,
     });
   });
 });
