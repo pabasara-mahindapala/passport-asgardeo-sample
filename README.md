@@ -2,6 +2,8 @@
 
 This is a sample [Express.js](https://expressjs.com) app that uses [Passport.js](http://passportjs.org) and [Asgardeo](https://wso2.com/asgardeo/) for authentication.
 
+For more information, read the step-by-step [guide](https://wso2.com/asgardeo/docs/complete-guides/nodejs/introduction).
+
 ## Getting Started
 
 1. Clone this repository:
